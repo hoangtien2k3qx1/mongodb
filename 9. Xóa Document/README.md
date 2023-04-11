@@ -1,59 +1,29 @@
 
 ## Xóa Document trong MongoDB
 
-Phương thức remove() trong MongoDB
-- Phương thức remove() trong MongoDB được sử dụng để xóa Document từ Collection. Phương thức remove() nhận hai tham số.
-  1. deletion criteria : (Tùy ý) Xác định Document để xóa.
-  2. justOne : (Tùy ý) Nếu được thiết lập là true hoặc 1, thì chỉ xóa một Document.
+Để xóa một document trong một collection trong MongoDB, có thể sử dụng các phương thức như `deleteOne()`, `deleteMany()`, `findOneAndDelete()` hoặc `remove()`.
 
 
-Cú pháp cơ bản của phương thức remove() là như sau:
+1. Phương thức deleteOne(): xóa một document đầu tiên trùng với điều kiện
 ```roomsql
->db.COLLECTION_NAME.remove(DELLETION_CRITTERIA)
+db.collection('ten_collection').deleteOne({name: 'ABC'}).then(function(){
+   console.log("Xóa document thành công");
+});
 ```
 
-
-Ví dụ:
-
-Bạn theo dõi Collection có tên mycol có dữ liệu sau:
+2. Phương thức deleteMany(): xóa tất cả các document thỏa mãn điều kiện
 ```roomsql
-{ "_id" : ObjectId(5983548781331adf45ec5), "title":"MongoDB Overview"}
-{ "_id" : ObjectId(5983548781331adf45ec6), "title":"NoSQL Overview"}
-{ "_id" : ObjectId(5983548781331adf45ec7), "title":"Tutorials Point Overview"}
+db.collection('ten_collection').deleteMany({name: 'ABC'}).then(function(){
+   console.log("Xóa tất cả các documents thành công");
+});
 ```
 
-Ví dụ sau sẽ xóa tất cả Document có title là 'MongoDB Overview':
+3. Phương thức findOneAndDelete(): Tìm và xóa một document trùng với điều kiện, sau đó trả về document đã xóa.
 ```roomsql
->db.mycol.remove({'title':'MongoDB Overview'})
->db.mycol.find()
-{ "_id" : ObjectId(5983548781331adf45ec6), "title":"NoSQL Overview"}
-{ "_id" : ObjectId(5983548781331adf45ec7), "title":"Tutorials Point Overview"}
->
+db.collection('ten_collection').findOneAndDelete({name: 'ABC'}).then(function(result){
+   console.log(result.value); // Document đã xóa
+});
 ```
-
-
-## Chỉ xóa một Document trong MongoDB
-Nếu có nhiều bản ghi và bạn chỉ muốn xóa bản ghi đầu tiên, thì thiết lập tham số justOne trong phương thức remove().
-```roomsql
->db.COLLECTION_NAME.remove(DELETION_CRITERIA,1)
-```
-
-## Xóa tất cả Document trong MongoDB
-Nếu bạn không xác định deletion criteria, thì MongoDB sẽ xóa toàn bộ Document từ Collection. Điều này tương đương với lệnh truncate trong SQL.
-```roomsql
->db.mycol.remove()
->db.mycol.find()
->
-```
-
-
-
-
-
-
-
-
-
 
 
 

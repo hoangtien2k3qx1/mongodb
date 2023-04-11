@@ -82,7 +82,8 @@ where by='tutorials point' AND title='MongoDB Overview'
 
 Ví Dụ:
 ```roomsql
->db.mycol.find({$or:[{"by":"tutorials point"},{"title": "MongoDB Overview"}]}).pretty()
+
+```>db.mycol.find({$or:[{"by":"tutorials point"},{"title": "MongoDB Overview"}]}).pretty()
 {
    "_id": ObjectId(7df78ad8902c),
    "title": "MongoDB Overview", 
@@ -93,7 +94,6 @@ Ví Dụ:
    "likes": "100"
 }
 >
-```
 
 
 
