@@ -26,6 +26,47 @@
 | Min key                 | 	-1	    | “minKey”                   |
 | Max key                 | 	127    | 	“maxKey”                  |
 
+Chú Thích:
+- [Chuỗi](): Đây là kiểu dữ liệu được sử dụng phổ biến nhất để lưu giữ dữ liệu. Chuỗi trong MongoDB phải là UTF-8 hợp lệ.
+- [Số nguyên](): Kiểu dữ liệu này được sử dụng để lưu một giá trị số. Số nguyên có thể là 32 bit hoặc 64 bit phụ thuộc vào Server của bạn.
+- [Boolean](): Kiểu dữ liệu này được sử dụng để lưu giữ một giá trị Boolean (true/false).
+- [Double](): Kiểu dữ liệu này được sử dụng để lưu các giá trị số thực dấu chấm động.
+- [Min/ Max keys](): Kiểu dữ liệu này được sử dụng để so sánh một giá trị với các phần tử BSON thấp nhất và cao nhất.
+- [Mảng](): Kiểu dữ liệu này được sử dụng để lưu giữ các mảng hoặc danh sách hoặc nhiều giá trị vào trong một key.
+- [Timestamp](): Đánh dấu thời điểm một Document được sửa đổi hoặc được thêm vào.
+- [Object](): Kiểu dữ liệu này được sử dụng cho các Document được nhúng vào.
+- [Null](): Kiểu dữ liệu này được sử dụng để lưu một giá trị Null.
+- [Symbol](): Kiểu dữ liệu này được sử dụng giống như một chuỗi
+- [Date](): Kiểu dữ liệu này được sử dụng để lưu giữ date và time hiện tại trong định dạng UNIX time.
+- [Object ID](): Kiểu dữ liệu này được sử dụng để lưu giữ ID của Document.
+- [Binary data](): Kiểu dữ liệu này được sử dụng để lưu giữ dữ liệu nhị phân.
+- [Code](): Kiểu dữ liệu này được sử dụng để lưu giữ JavaScrip code vào trong Document.
+- [Regular expression](): Kiểu dữ liệu này được sử dụng để lưu giữ Regular Expresion.
+
+
+
+## Một số câu lệnh dùng trong MongoDB
+
+| Câu lệnh                   | 	SQL                                                                                                                           | 	MongoDB                                                                |
+|----------------------------|--------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| Create table               | 	CREATE TABLE people (id MEDIUMINT NOT NULL AUTO_INCREMENT, user_id Varchar(30), age Number, status char(1), PRIMARY KEY (id)) | 	db.people.insertOne({User_id: “abc123”, Age: 55, Status: “A”})         |
+| Drop table                 | 	DROP TABLE people                                                                                                             | 	db.people.drop()                                                       |
+| Insert records into tables | 	INSERT INTO people(user_id, age, status) VALUES ("bcd001", 45, "A")	                                                          | db.people.insertOne( { user_id: "bcd001", age: 45, status: "A" })       |
+| Select                     | 	SELECT *FROM people                                                                                                           | 	db.people.find()                                                       |
+|                            | SELECT id,user_id, status FROM people	                                                                                         | db.people.find( { }, { user_id: 1, status: 1 } )                        |
+|                            | SELECT * FROM people WHERE status = "A"                                                                                        | 	db.people.find( { status: "A" } )                                      |
+|                            | SELECT * FROM people WHERE status = "A" AND age = 50                                                                           | 	db.people.find( { status: "A", age: 50 } )                             |
+|                            | SELECT * FROM people WHERE status = "A" OR age = 50                                                                            | 	db.people.find( { $or: [ { status: "A" } , { age: 50 } ] } )           |
+|                            | SELECT * FROM people WHERE user_id like "%bc%"                                                                                 | 	db.people.find( { user_id: /bc/ } )                                    |
+|                            |                                                                                                                                | db.people.find( { user_id: { $regex: /bc/ } } )                         |
+|                            | SELECT COUNT(user_id) FROM people	                                                                                             | db.people.count( { user_id: { $exists: true } } )                       |
+|                            |                                                                                                                                | db.people.find( { user_id: { $exists: true } } ).count()                |
+| Update records             | 	UPDATE people SET status = "C" WHERE age > 25	                                                                                | db.people.updateMany( { age: { $gt: 25 } }, { $set: { status: "C" } } ) |
+|                            | UPDATE people SET age = age + 3 WHERE status = "A"	                                                                            | db.people.updateMany( { status: "A" } , { $inc: { age: 3 } } )          |
+| Delete Records             | 	DELETE FROM people WHERE status = "D"	                                                                                        | db.people.deleteMany( { status: "D" } )                                 |
+|                            | DELETE FROM people	                                                                                                            | db.people.deleteMany({})                                                |
+
+
 
 
 
@@ -63,3 +104,28 @@
 ### Index
 - Là những cấu trúc dữ liệu đặc biệt, dùng để chứa một phần nhỏ của các tập dữ liệu một cách dễ dàng để quét.
 - Chỉ số lưu trữ giá trị của một fields cụ thể hoặc thiết lập các fields, sắp xếp theo giá trị của các fields này.
+
+
+![](https://images.viblo.asia/c17118e5-9791-462f-878c-a51778dc357d.jpg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
