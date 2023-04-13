@@ -1,7 +1,35 @@
 ![](https://images.viblo.asia/566f87af-2553-42b4-be61-f769444b8dc7.png)
 
 
-## Các thuật ngữ hay sử dụng trong MongoDB
+## - Các kiểu dữ liệu trong MongoDB
+| Type                    | 	Number | 	Alias                     |
+|-------------------------|---------|----------------------------|
+| Double                  | 	1      | 	              “double”    |
+| String                  | 	2	     | “string”                   |
+| Object                  | 	3      | 	“object”                  |
+| Array                   | 4       | 	“array”                   |
+| Binary data             | 	5      | 	“binData”                 |
+| Undefined               | 	6      | 	“undefined”               |
+| ObjectId                | 	7      | 	“objectId”                |
+| Boolean                 | 	8	     | “bool”                     |
+| Date                    | 	9      | 	“date”                    |
+| Null                    | 	10     | 	“null”                    |
+| Regular Expression      | 	11	    | “regex”                    |
+| DBPointer               | 	12     | 	“dbPointer”               |
+| JavaScript              | 	13     | 	“javascript”              |
+| Symbol                  | 	14     | “symbol”                   |
+| JavaScript (with scope) | 	15	    | “javascriptWithScope”      |
+| 32-bit integer          | 	16	    | “int”                      |
+| Timestamp               | 	17	    | “timestamp”                |
+| 64-bit integer          | 	18	    | “long”                     |
+| Decimal128              | 19	     | “decimal”                  |
+| Min key                 | 	-1	    | “minKey”                   |
+| Max key                 | 	127    | 	“maxKey”                  |
+
+
+
+
+## - Các thuật ngữ hay sử dụng trong MongoDB
 
 ### _id 
 - Là trường bắt buộc có trong mỗi document. Trường _id đại diện cho một giá trị duy nhất trong document MongoDB. Trường _id cũng có thể được hiểu là khóa chính trong document. 
