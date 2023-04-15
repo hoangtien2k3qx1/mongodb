@@ -38,8 +38,10 @@ Ví Dụ:
 ```
 
 
-
-
+Ví Dụ: để tạo một collection với giới hạn tối đa là 100 bản ghi, ta sử dụng lệnh sau:
+```roomsql
+db.createCollection("myCollection", { "max": 100 })
+```
 
 
 
